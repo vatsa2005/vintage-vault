@@ -1,5 +1,9 @@
 function Cart() {
-  return <div>Hii</div>;
+  return (
+    <div>
+      <p>Hii</p>
+    </div>
+  );
 }
 
 export default Cart;
