@@ -9,7 +9,6 @@ import {
   CreditCard,
   Handshake,
   Home,
-  MessageCircle,
   MessageSquare,
   Plus,
   Telescope,

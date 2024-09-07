@@ -2,7 +2,6 @@ import PostComponent from "@/components/PostComponent";
 import { Button } from "@/components/ui/button";
 import { SignedOut, SignInButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
-import { UserRound } from "lucide-react";
 
 export default function Home() {
   const { userId } = auth();
