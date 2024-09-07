@@ -35,7 +35,7 @@ export default function Home() {
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-3">
               <User />
-              <p>Profile Name</p>
+              <p>vatsa</p>
             </div>
             <Button className="bg-transparent hover:bg-[#C19473]">
               <Plus />
