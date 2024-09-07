@@ -72,10 +72,10 @@ export default function RootLayout({
               <Link href="/">
                 <Home className="icon w-8 h-8" />
               </Link>
-              <Link href="/">
+              <Link href="/explore">
                 <Telescope className="icon w-8 h-8" />
               </Link>
-              <Link href="/">
+              <Link href="/chat">
                 <MessageSquare className="icon w-8 h-8" />
               </Link>
               <Link href="/">

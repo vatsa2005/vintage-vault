@@ -24,9 +24,18 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 
 function PostComponent() {
   const [liked, setLiked] = useState<boolean>(false);
+  const [commentSendCls, setCommentSendCls] = useState<string>("hidden");
 
   function handleLikes() {
     setLiked(!liked);
+  }
+
+  function handleCommentChange(e: React.FormEvent<HTMLInputElement>) {
+    if (e?.currentTarget?.value) {
+      setCommentSendCls("inline-block");
+    } else {
+      setCommentSendCls("hidden");
+    }
   }
 
   return (
@@ -95,7 +104,7 @@ function PostComponent() {
             <Button className="bg-transparent hover:bg-[#C19473]">
               <MessageCircleMore className="h-[10] w-[10]" />
             </Button>
-            <Button className="bg-transparent hover:bg-[#C19473]">
+            <Button className="inline-block bg-transparent hover:bg-[#C19473] md:hidden lg:hidden">
               <Send className="h-[10] w-[10]" />
             </Button>
             <Button className="bg-transparent hover:bg-[#C19473]">
@@ -103,11 +112,11 @@ function PostComponent() {
             </Button>
           </div>
         </div>
-        <div className="flex text-black p-1">
+        <div className="flex text-black p-1 px-2">
           <p className="pr-4">stamp__stories</p>
           <p>Check out my new stamp</p>
         </div>
-        <div className="p-1 text-black">
+        <div className="p-1 text-black px-2">
           <p className="hover:underline cursor-pointer inline-block">
             View all comments
           </p>
@@ -118,11 +127,17 @@ function PostComponent() {
             <input
               className="bg-transparent outline-none py-2 placeholder-gray-300 px-1"
               placeholder="Add a comment..."
+              onChange={handleCommentChange}
             />
+            <Button
+              className={`bg-transparent hover:bg-[#C19473] ${commentSendCls}`}
+            >
+              <Send />
+            </Button>
           </div>
         </div>
       </div>
-      <div className="hidden md:px-10 lg:px-10">
+      <div className="hidden md:inline-block md:px-10 lg:inline-block lg:px-10">
         <Button className="bg-transparent rounded-full hover:bg-[#C19473]">
           <Forward />
         </Button>

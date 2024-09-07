@@ -2,6 +2,7 @@ import PostComponent from "@/components/PostComponent";
 import { Button } from "@/components/ui/button";
 import { SignedOut, SignInButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
+import { Plus, User } from "lucide-react";
 
 export default function Home() {
   const { userId } = auth();
@@ -27,8 +28,19 @@ export default function Home() {
         </section>
       )}
       {userId && (
-        <section className="hidden justify-center col-span-2 md:flex lg:flex">
-          <h1 className="text-lg font-bold text-black">Recommended</h1>
+        <section className="flex-col hidden items-evenly col-span-2 py-5 pl-5 md:flex lg:flex">
+          <h1 className="text-lg font-bold text-black self-center">
+            Recommended
+          </h1>
+          <div className="flex items-center justify-between py-3">
+            <div className="flex items-center space-x-3">
+              <User />
+              <p>Profile Name</p>
+            </div>
+            <Button className="bg-transparent hover:bg-[#C19473]">
+              <Plus />
+            </Button>
+          </div>
         </section>
       )}
     </main>
