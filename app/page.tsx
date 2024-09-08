@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="flex min-h-full max-w-full justify-center items-center">
       {userId ? (
-        <Button>
+        <Button className="bg-[#C39D76] hover:bg-[#C19473] --tw-shadow: 2px 1px 2px 1px rgba(1, 1, 1, 1)  text-black">
           <Link href="/posts/stamps">Start Exploring</Link>
         </Button>
       ) : (
