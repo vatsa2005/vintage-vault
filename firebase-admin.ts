@@ -2,20 +2,36 @@ import { initializeApp, getApps, App, getApp, cert } from "firebase-admin/app";
 
 import { getFirestore } from "firebase/firestore";
 
-const serviceKey = require("@/service_key.json");
+// const serviceKey = require("@/service_key.json");
 
-let app: App;
+// let app: App;
 
-// app = getApps().length === 0 ? initializeApp({credential: cert(serviceKey)}) : getApp();
+// // app = getApps().length === 0 ? initializeApp({credential: cert(serviceKey)}) : getApp();
+
+// if (getApps().length === 0) {
+//   app = initializeApp({
+//     credential: cert(serviceKey),
+//   });
+// } else {
+//   app = getApp();
+// }
+
+// const adminDb = getFirestore(app);
+
+// export { app as adminApp, adminDb };
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("@/service_key.json");
 
 if (getApps().length === 0) {
-  app = initializeApp({
-    credential: cert(serviceKey),
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
   });
 } else {
-  app = getApp();
+  admin = getApp();
 }
 
-const adminDb = getFirestore(app);
+const adminDb = getFirestore(admin);
 
-export { app as adminApp, adminDb };
+export { admin as adminApp, adminDb };
