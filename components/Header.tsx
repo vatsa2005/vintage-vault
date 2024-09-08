@@ -25,7 +25,7 @@ import Link from "next/link";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 function Header() {
-  const [dropdownName, setDropDownName] = useState<string | null>("Stamps");
+  const [dropdownName, setDropDownName] = useState<string | null>("Home");
 
   function handleDropdownClick(
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -50,28 +50,32 @@ function Header() {
               </DropdownMenuTrigger>
             </Button>
             <DropdownMenuContent className="bg-[#C19473]">
-              <DropdownMenuSeparator />
               <Link href="/">
+                <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
+                  Home
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/posts/stamps">
                 <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
                   Stamps
                 </DropdownMenuItem>
               </Link>
-              <Link href="/">
+              <Link href="/posts/cars">
                 <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
                   Cars
                 </DropdownMenuItem>
               </Link>
-              <Link href="/">
+              <Link href="/posts/textiles">
                 <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
                   Textiles
                 </DropdownMenuItem>
               </Link>
-              <Link href="/">
+              <Link href="/posts/cameras">
                 <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
                   Cameras
                 </DropdownMenuItem>
               </Link>
-              <Link href="/">
+              <Link href="/posts/postcards">
                 <DropdownMenuItem onClick={(e) => handleDropdownClick(e)}>
                   postcards
                 </DropdownMenuItem>

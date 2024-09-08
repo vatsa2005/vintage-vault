@@ -11,7 +11,7 @@ import {
   Save,
   Send,
 } from "lucide-react";
-import { Button } from "./ui/button";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,12 +19,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 function PostComponent() {
   const [liked, setLiked] = useState<boolean>(false);
   const [commentSendCls, setCommentSendCls] = useState<string>("hidden");
+  const [cat, setCat] = useState<string | null>("");
+
+  useEffect(() => {
+    setCat(localStorage.getItem("category"));
+    console.log(cat);
+  });
 
   function handleLikes() {
     setLiked(!liked);

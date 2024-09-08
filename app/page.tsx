@@ -1,19 +1,17 @@
-import PostComponent from "@/components/PostComponent";
+// import PostComponent from "@/app/posts/[catogery]/PostComponent";
 import { Button } from "@/components/ui/button";
 import { SignedOut, SignInButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
-import { Plus, User } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const { userId } = auth();
   return (
-    <main className="grid grid-cols-8 md:px-5 lg:px-5">
+    <main className="flex min-h-full max-w-full justify-center items-center">
       {userId ? (
-        <section className="col-span-full md:col-span-6 lg:col-span-6 bg-[#EDC8A3] md:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795] lg:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795]">
-          <PostComponent />
-          <PostComponent />
-          <PostComponent />
-        </section>
+        <Button>
+          <Link href="/posts/stamps">Start Exploring</Link>
+        </Button>
       ) : (
         <section className="col-span-full md:col-span-6 lg:col-span-6 flex flex-col justify-evenly items-center text-black">
           <p>Please Login</p>
@@ -25,22 +23,6 @@ export default function Home() {
               </Button>
             </SignInButton>
           </SignedOut>
-        </section>
-      )}
-      {userId && (
-        <section className="flex-col hidden items-evenly col-span-2 py-5 pl-5 md:flex lg:flex">
-          <h1 className="text-lg font-bold text-black self-center">
-            Recommended
-          </h1>
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center space-x-3">
-              <User />
-              <p>vatsa</p>
-            </div>
-            <Button className="bg-transparent hover:bg-[#C19473]">
-              <Plus />
-            </Button>
-          </div>
         </section>
       )}
     </main>
