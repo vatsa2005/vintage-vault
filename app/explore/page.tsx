@@ -1,5 +1,7 @@
 function Explore() {
-  return <div></div>;
+  return <div>
+    <h1>karthik</h1>
+  </div>;
 }
 
 export default Explore;
