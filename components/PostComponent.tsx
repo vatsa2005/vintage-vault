@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 
