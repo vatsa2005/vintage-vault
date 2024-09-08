@@ -55,7 +55,12 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		fontFamily:{
+			cart :['Orbitron'],
+			head :['Ysabeau Infant'],
+			prof :['Indie Flower'],
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
