@@ -26,12 +26,6 @@ import { Button } from "./ui/button";
 function PostComponent() {
   const [liked, setLiked] = useState<boolean>(false);
   const [commentSendCls, setCommentSendCls] = useState<string>("hidden");
-  const [cat, setCat] = useState<string | null>("");
-
-  useEffect(() => {
-    setCat(localStorage.getItem("category"));
-    console.log(cat);
-  });
 
   function handleLikes() {
     setLiked(!liked);
