@@ -1,6 +1,4 @@
 import type { Config } from "tailwindcss";
-import shop from "./app/shop/page";
-
 const config: Config = {
     darkMode: ["class"],
     content: [
