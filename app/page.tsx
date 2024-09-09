@@ -11,17 +11,9 @@ export default function Home() {
   return (
     <main className=" min-h-full max-w-full">
       {userId ? (
-        <div className="flex justify-center items-center">
-        <div>
-          <Image
-          src={Front}
-          alt="Front"
-          className="w-4/6 h-4/6 object-contain mt-16 ml-24 mb-16" />
-          <Button className="mx-56 bg-transparent text-black font-cart text-2xl text-bold hover:bg-[#C19473] p-8 border-solid border-4 border-black rounded-xl">
-            <Link href="/posts/stamps">START EXPLORING</Link>
-          </Button>
-          </div>
-          </div>
+        <Button>
+          <Link href="/posts/stamps">Start Exploring</Link>
+        </Button>
       ) : (
         <section className="col-span-full md:col-span-6 lg:col-span-6 flex flex-col justify-evenly items-center text-black">
           <p>Please Login</p>
