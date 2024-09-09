@@ -3,14 +3,12 @@ import Image from 'next/image';
 import anna from './anna.jpg';
 import izanami from './izanami.jpg';
 import india from './india 1967.jpg';
-import { Bookmark, ChevronLeft } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 
 function shop() {  
   return (  
    <div className="shop-container py-10"><br></br>
-    <div className="flex space-x-96 ml-8">
-     <ChevronLeft className=" size-9 text-black"/> 
-      <h1 className="text-3xl text-black text-center font-bold">SHOP ANTIQUE GEMS</h1></div>
+      <h1 className="text-3xl text-black text-center font-bold">SHOP ANTIQUE GEMS</h1>
     <div className="stamps flex justify-center space-x-12 mt-10">  
       <div className="stamps__item rounded-3xl border-[#C39D76] p-6 border-2">  
        <div className="image flex justify-center items-center">  
