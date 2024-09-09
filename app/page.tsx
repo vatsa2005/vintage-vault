@@ -11,9 +11,22 @@ export default function Home() {
   return (
     <main className=" min-h-full max-w-full">
       {userId ? (
-        <Button>
-          <Link href="/posts/stamps">Start Exploring</Link>
+        <div className="flex-justify-center">
+          <div>
+        <div className="flex justify-center">
+        <Image
+          src={Front}
+          alt="Front"
+          className="w-2/5 h-3/5 mt-24 object-contain"
+        />
+        </div>
+        <div className="flex justify-center">
+        <Button className="bg-transparent rounded-xl border-solid border-4 border-black font-exp text-xl p-8 m-16 text-black hover:bg-[#C19473] "> 
+          <Link href="/posts/stamps">START EXPLORING</Link>
         </Button>
+        </div>
+        </div>
+        </div>
       ) : (
         <section className="col-span-full md:col-span-6 lg:col-span-6 flex flex-col justify-evenly items-center text-black">
           <p>Please Login</p>
