@@ -1,5 +1,7 @@
 import { Cog, Save, ShieldAlert, ShoppingCart, UserPlus, UserRound } from 'lucide-react';
 import Link from "next/link";
+import { Button } from './ui/button';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 function Menubar(){
     return(<div className='absolute top-20 right-2 bg-[#C19473] rounded-xl p-8 font-head' >
         <div>
@@ -17,11 +19,19 @@ function Menubar(){
         </div>
         </Link>
        
-        <div className='mt-8 flex space-x-12' >
+       <Link href="/cart">
+       <div className='mt-8 flex space-x-12' >
                <ShoppingCart className='h-10 w-10 '/>
-               <h3 className='mt-2 text-xl'> View Cart</h3>
-        </div>
+              <h3 className='mt-2 text-xl'> View Cart</h3>
+       </div>
+       </Link>
+
         <div className='mt-8 flex space-x-12' >
+        <Button className="bg-[#C39D76] hover:bg-[#C19473]">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Button>
                < UserPlus className='h-10 w-10 '/>
                <h3 className='mt-2 text-xl'>Switch Account</h3>
         </div>
