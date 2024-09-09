@@ -21,7 +21,7 @@ export default function Home() {
         />
         </div>
         <div className="flex justify-center">
-        <Button className="bg-transparent rounded-xl border-solid border-4 border-black font-exp text-xl p-8 m-16 text-black hover:bg-[#C19473] "> 
+        <Button asChild className="bg-transparent rounded-xl border-solid border-4 border-black font-exp text-xl p-8 m-16 text-black hover:bg-[#C19473] "> 
           <Link href="/posts/stamps">START EXPLORING</Link>
         </Button>
         </div>

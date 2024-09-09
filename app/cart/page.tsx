@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Emb from './emb.jpg'
+import Emb from './emb.jpg' 
 import Hyd from './hyd.jpg'
 import Anna from './anna.jpg'
 function Cart() {
