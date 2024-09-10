@@ -28,6 +28,7 @@ function PostCat({ params }: { params: { catogery: string } }) {
       {user ? (
         <section className="col-span-full md:col-span-6 lg:col-span-6 bg-[#EDC8A3] md:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795] lg:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795]">
           {docs?.map((val: any) => {
+            // eslint-disable-line @typescript-eslint/no-explicit-any
             return (
               val && (
                 <PostComponent
