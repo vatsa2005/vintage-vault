@@ -56,13 +56,15 @@ function PostComponent({
           <div className="flex justify-between p-5 items-center">
             <div className="flex items-center">
               {/* <CircleUserRound className="h-8 w-8" /> */}
-              <img
-                src={`${profilePic || postImage}`}
-                alt="Profile"
-                height={40}
-                width={40}
-                className="rounded-full"
-              />
+              <picture>
+                <img
+                  src={`${profilePic || postImage}`}
+                  alt="Profile"
+                  height={40}
+                  width={40}
+                  className="rounded-full"
+                />
+              </picture>
               <p className="px-4">{name}</p>
               <CircleDot />
               <p className="text-[#00000087] px-2">24m</p>
