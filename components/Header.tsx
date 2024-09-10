@@ -98,7 +98,7 @@ function Header() {
         />
       </div>
       <div className="hidden space-x-4 items-center md:hidden lg:flex">
-        <Link href="/" className="bg-[#C39D76]">
+        <Link href="/addPost" className="bg-[#C39D76]">
           <CirclePlus className="icon w-8 h-8" />
         </Link>
         <form
