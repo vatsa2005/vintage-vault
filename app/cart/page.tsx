@@ -58,7 +58,7 @@ function Cart() {
         <div className="w-full max-w-xl">
         <div className="flex justify-between  font-bold text-2xl">
         <h3 className="font-head">The Half Anna Stamp</h3>
-        <h3>₹ 98,000</h3>
+        <h3>₹ 9,000</h3>
         </div>
         <h3 className="font-prof text-2xl ml-8 mt-4">by stamp_king_.</h3>
          <div className="flex justify-end font-head text-xl text-white " >

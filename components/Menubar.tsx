@@ -26,16 +26,20 @@ function Menubar(){
        </div>
        </Link>
 
-        <div className='mt-8 flex space-x-12' >
-        <Button className="bg-[#C39D76] hover:bg-[#C19473]">
+        <div className='flex justify-center items-center pt-8' >
+        <Button className="bg-transparent font-head text-[#171717] text-xl hover:bg-transparent flex items-center justify-start space-x-12 p-0 ml-2 ">
           <SignedIn>
+              <div className='flex justify-center items-center'>
             <UserButton />
+              </div>
+              <div>
+
+            <p>Switch account</p>
+              </div>
           </SignedIn>
         </Button>
-               < UserPlus className='h-10 w-10 '/>
-               <h3 className='mt-2 text-xl'>Switch Account</h3>
         </div>
-        <div className='mt-8 flex space-x-12' >
+        <div className='mt-8  flex space-x-12' >
                <ShieldAlert className='h-10 w-10 '/>
                <h3 className='mt-2 text-xl'>Report</h3>
         </div>

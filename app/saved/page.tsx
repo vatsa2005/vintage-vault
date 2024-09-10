@@ -7,8 +7,12 @@ import Statue from './statue.png'
 import { EllipsisVertical } from "lucide-react";
 function Saved(){
      return(
-        <div className="flex justify-center">
-            <div className="flex flex-wrap m-24">
+        <div>
+            <div className="flex justify-center">
+            <h2 className="font-cart  font-bold text-2xl text-center mt-8">Saved</h2>
+            </div>
+            <div className="flex justify-center p-4">
+            <div className="grid grid-rows-2 grid-flow-col gap-2 ">
               <div className="bg-[#C19473] w-fit p-8 font-bold m-8 rounded-xl">
               <div className="flex justify-between font-head  ">
               <h3 className="text-xl">Cars</h3>
@@ -63,6 +67,7 @@ function Saved(){
                  alt="Car"
                  className="w-40 h-40 object-contain mt-4"
                />
+              </div>
               </div>
             </div>
         </div>
