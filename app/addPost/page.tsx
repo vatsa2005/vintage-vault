@@ -19,10 +19,7 @@ function AddPost() {
 
   function handlePost() {
     setTransition(async () => {
-      const { postId } = await createNewPost(
-        textRef?.current?.value,
-        dropdownName
-      );
+      await createNewPost(textRef?.current?.value, dropdownName);
       router.back();
     });
   }

@@ -1,9 +1,9 @@
 "use client";
 import PostComponent from "@/components/PostComponent";
 import { Button } from "@/components/ui/button";
-import { SignedOut, SignInButton, useAuth, useUser } from "@clerk/nextjs";
+import { SignedOut, SignInButton, useUser } from "@clerk/nextjs";
 import { Plus, User } from "lucide-react";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { collection } from "firebase/firestore";
 import { DocumentData } from "firebase-admin/firestore";
 import { db } from "@/firebase";
@@ -12,9 +12,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 function PostCat({ params }: { params: { catogery: string } }) {
   const [docs, setDocs] = useState<DocumentData | undefined>([]);
   const { user } = useUser();
-  const [locCollection, loading, error] = useCollection(
-    collection(db, "postCollection")
-  );
+  const [locCollection] = useCollection(collection(db, "postCollection"));
   useEffect(() => {
     const groupedCollection: DocumentData | undefined = locCollection?.docs.map(
       (val) => {
@@ -24,7 +22,7 @@ function PostCat({ params }: { params: { catogery: string } }) {
       }
     );
     setDocs(groupedCollection);
-  }, [locCollection]);
+  }, [locCollection, params?.catogery]);
   return (
     <main className="grid grid-cols-8 md:px-5 lg:px-5">
       {user ? (
