@@ -78,7 +78,7 @@ export default function RootLayout({
               <Link href="/chat">
                 <MessageSquare className="icon w-8 h-8" />
               </Link>
-              <Link href="/">
+              <Link href="/addPost">
                 <Plus className="icon w-8 h-8" />
               </Link>
             </footer>
