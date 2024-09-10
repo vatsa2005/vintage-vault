@@ -22,15 +22,22 @@ import { useState } from "react";
 import Link from "next/link";
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Menubar from "./Menubar";
 
 function Header() {
   const [dropdownName, setDropDownName] = useState<string | null>("Home");
+  const [menuFlg, setMenuFlg] = useState<boolean>(true);
 
   function handleDropdownClick(
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) {
     setDropDownName(e?.currentTarget?.textContent);
   }
+
+  function handleMenuClick() {
+    setMenuFlg(!menuFlg);
+  }
+  
 
   return (
     <div className="flex items-center min-h-14 justify-between">
@@ -120,9 +127,11 @@ function Header() {
             <UserButton />
           </SignedIn>
         </Button>
-        <Button className="bg-[#C39D76] hover:bg-[#C19473]">
+        {menuFlg ? <Button className="bg-[#C39D76] hover:bg-[#C19473]" onClick={handleMenuClick}>
           <Menu className="icon w-8 h-8" />
-        </Button>
+        </Button> : <><Button className="bg-[#C39D76] hover:bg-[#C19473]" onClick={handleMenuClick}>
+          <Menu className="icon w-8 h-8" />
+        </Button><Menubar/></>}
       </div>
       <Button className="bg-[#C39D76] hover:bg-[#C19473] md:flex lg:hidden">
         <Menu className="icon w-8 h-8" />
