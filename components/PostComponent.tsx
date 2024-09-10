@@ -23,7 +23,17 @@ import { useState } from "react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 
-function PostComponent() {
+function PostComponent({
+  desc,
+  name,
+  profilePic,
+  postImg,
+}: {
+  desc: string;
+  name: string;
+  profilePic?: string;
+  postImg?: string;
+}) {
   const [liked, setLiked] = useState<boolean>(false);
   const [commentSendCls, setCommentSendCls] = useState<string>("hidden");
 
@@ -46,14 +56,14 @@ function PostComponent() {
           <div className="flex justify-between p-5 items-center">
             <div className="flex items-center">
               {/* <CircleUserRound className="h-8 w-8" /> */}
-              <Image
-                src={postImage}
+              <img
+                src={`${profilePic || postImage}`}
                 alt="Profile"
                 height={40}
                 width={40}
                 className="rounded-full"
               />
-              <p className="px-4">stamp__stories</p>
+              <p className="px-4">{name}</p>
               <CircleDot />
               <p className="text-[#00000087] px-2">24m</p>
             </div>
@@ -85,11 +95,15 @@ function PostComponent() {
             </div>
           </div>
           <div>
-            <Image
-              className="max-w-[2000px] object-cover"
-              src={postImage}
-              alt="Post Image"
-            />
+            {postImg ? (
+              <Image
+                className="max-w-[2000px] object-cover"
+                src={postImage}
+                alt="Post Image"
+              />
+            ) : (
+              <p>{desc}</p>
+            )}
           </div>
           <div className="flex justify-evenly p-5">
             <Button
