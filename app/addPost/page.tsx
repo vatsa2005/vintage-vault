@@ -10,12 +10,15 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useRef, useState, useTransition } from "react";
+import { ChangeEvent, useRef, useState, useTransition } from "react";
 
 function AddPost() {
   const [isPending, setTransition] = useTransition();
+  const [imgUrl, setImgUrl] = useState<string | undefined>("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const imgRef = useRef<HTMLInputElement>(null);
 
   function handlePost() {
     setTransition(async () => {
@@ -35,9 +38,38 @@ function AddPost() {
     setDropDownName(e?.currentTarget?.textContent);
   }
 
+  function handleImgClick() {
+    imgRef?.current?.click();
+    console.log(imgUrl);
+  }
+
   return (
     <div className="flex flex-col max-w-full min-h-full items-center space-y-4 justify-center">
       <textarea className="w-7xl text-black" ref={textRef}></textarea>
+      <input
+        type="file"
+        name="postImage"
+        accept=".png, .jpg, .jpeg, .gif, .svg"
+        ref={imgRef}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          if (!event.target.files) return;
+          setSelectedFile(event.target.files[0]);
+          selectedFile === null
+            ? ""
+            : setImgUrl(URL.createObjectURL(selectedFile));
+        }}
+        className="hidden"
+      />
+      <Button onClick={handleImgClick}>Choose an Image</Button>
+      {selectedFile && (
+        <picture>
+          <img
+            src={selectedFile === null ? "" : URL.createObjectURL(selectedFile)}
+            alt="Preview"
+            className="w-40 h-40 object-contain"
+          />
+        </picture>
+      )}
       <div className="flex space-x-5">
         <p>Catogery:</p>
         <DropdownMenu>

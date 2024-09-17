@@ -2,6 +2,7 @@
 
 import { adminDb } from "@/firebase-admin";
 import { auth } from "@clerk/nextjs/server";
+// import { collection } from "firebase/firestore";
 
 export async function createNewPost(
   text: string | undefined,
@@ -11,6 +12,7 @@ export async function createNewPost(
   const { sessionClaims } = await auth();
 
   const postCollectionRef = adminDb.collection("postCollection");
+  // const commentCollectionRef = adminDb.collection("comments");
 
   const postRef = await postCollectionRef.add({
     userid: sessionClaims?.userid!,
@@ -21,14 +23,4 @@ export async function createNewPost(
     catogery: catogery,
   });
   return { postId: postRef.id };
-}
-
-export async function getPosts() {
-  const postCollectionRef = adminDb.collection("postCollection");
-  const data = postCollectionRef?.onSnapshot((doc) => {
-    return doc?.forEach((val) => {
-      return val?.data();
-    });
-  });
-  return { data: data };
 }
