@@ -2,12 +2,15 @@
 
 import { createNewPost } from "@/actions/actions";
 import { Button } from "@/components/ui/button";
+import { db, storage } from "@/firebase";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
+import { doc, updateDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useRef, useState, useTransition } from "react";
@@ -22,7 +25,18 @@ function AddPost() {
 
   function handlePost() {
     setTransition(async () => {
-      await createNewPost(textRef?.current?.value, dropdownName);
+      const docId = await createNewPost(textRef?.current?.value, dropdownName);
+      if (selectedFile) {
+        const imageRef = ref(storage, `/images/${docId.postId}`);
+        await uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
+          const downloadURL = await getDownloadURL(imageRef);
+          const docRef = doc(db, "postCollection", docId.postId);
+          await updateDoc(docRef, {
+            image: downloadURL,
+          });
+        });
+      }
+      console.log(imgUrl);
       router.back();
     });
   }

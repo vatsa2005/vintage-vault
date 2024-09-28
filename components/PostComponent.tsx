@@ -27,12 +27,13 @@ function PostComponent({
   desc,
   name,
   profilePic,
-  postImg,
+  imgUrl,
 }: {
   desc: string;
   name: string;
   profilePic?: string;
   postImg?: string;
+  imgUrl?: string;
 }) {
   const [liked, setLiked] = useState<boolean>(false);
   const [commentSendCls, setCommentSendCls] = useState<string>("hidden");
@@ -71,7 +72,7 @@ function PostComponent({
             </div>
             <div>
               <DropdownMenu>
-                <Button className="bg-transparent hover:bg-[#C39D76]">
+                <Button asChild className="bg-transparent hover:bg-[#C39D76]">
                   <DropdownMenuTrigger>
                     <EllipsisVertical />
                   </DropdownMenuTrigger>
@@ -96,13 +97,15 @@ function PostComponent({
               </DropdownMenu>
             </div>
           </div>
-          <div>
-            {postImg ? (
-              <Image
-                className="max-w-[2000px] object-cover"
-                src={postImage}
-                alt="Post Image"
-              />
+          <div className="flex justify-center items-center">
+            {imgUrl ? (
+              <picture>
+                <img
+                  src={imgUrl}
+                  alt="post Image"
+                  className="w-50 h-50 object-contain"
+                />
+              </picture>
             ) : (
               <p>{desc}</p>
             )}
@@ -130,8 +133,11 @@ function PostComponent({
           </div>
         </div>
         <div className="flex text-black p-1 px-2">
-          <p className="pr-4">stamp__stories</p>
-          <p>Check out my new stamp</p>
+          <p className="pr-4">{name}</p>
+          <p>{desc}</p>
+        </div>
+        <div className="p-1 text-black px-2">
+          <p>0 Likes</p>
         </div>
         <div className="p-1 text-black px-2">
           <p className="hover:underline cursor-pointer inline-block">

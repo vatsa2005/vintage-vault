@@ -3,7 +3,7 @@ import PostComponent from "@/components/PostComponent";
 import { Button } from "@/components/ui/button";
 import { SignedOut, SignInButton, useUser } from "@clerk/nextjs";
 import { Plus, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { collection } from "firebase/firestore";
 import { DocumentData } from "firebase-admin/firestore";
 import { db } from "@/firebase";
@@ -11,17 +11,19 @@ import { useCollection } from "react-firebase-hooks/firestore";
 
 function PostCat({ params }: { params: { catogery: string } }) {
   const [docs, setDocs] = useState<DocumentData | undefined>([]);
+  const [isPending, setTransition] = useTransition();
   const { user } = useUser();
   const [locCollection] = useCollection(collection(db, "postCollection"));
   useEffect(() => {
-    const groupedCollection: DocumentData | undefined = locCollection?.docs.map(
-      (val) => {
-        if (val?.data()?.catogery?.toLowerCase() == params?.catogery) {
-          return val?.data();
-        }
-      }
-    );
-    setDocs(groupedCollection);
+    setTransition(async () => {
+      const groupedCollection: DocumentData | undefined =
+        locCollection?.docs.map((val) => {
+          if (val?.data()?.catogery?.toLowerCase() == params?.catogery) {
+            return val?.data();
+          }
+        });
+      setDocs(groupedCollection);
+    });
   }, [locCollection, params?.catogery]);
   return (
     <main className="grid grid-cols-8 md:px-5 lg:px-5">
@@ -29,12 +31,16 @@ function PostCat({ params }: { params: { catogery: string } }) {
         <section className="col-span-full md:col-span-6 lg:col-span-6 bg-[#EDC8A3] md:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795] lg:bg-[conic-gradient(var(--tw-gradient-stops))] from-[#C5A687] via-[#EDC8A3] to-[#D9B795]">
           {docs?.map((val: any) => {
             // eslint-disable-line @typescript-eslint/no-explicit-any
-            return (
+            console.log(val?.createdAt);
+            return isPending ? (
+              <p>Loading</p>
+            ) : (
               val && (
                 <PostComponent
                   desc={val?.text}
                   name={val?.name}
                   profilePic={`${val?.profilePic}`}
+                  imgUrl={val?.image}
                 />
               )
             );

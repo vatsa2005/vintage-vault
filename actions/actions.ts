@@ -2,7 +2,6 @@
 
 import { adminDb } from "@/firebase-admin";
 import { auth } from "@clerk/nextjs/server";
-// import { collection } from "firebase/firestore";
 
 export async function createNewPost(
   text: string | undefined,
@@ -12,7 +11,6 @@ export async function createNewPost(
   const { sessionClaims } = await auth();
 
   const postCollectionRef = adminDb.collection("postCollection");
-  // const commentCollectionRef = adminDb.collection("comments");
 
   const postRef = await postCollectionRef.add({
     userid: sessionClaims?.userid!,
