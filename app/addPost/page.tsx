@@ -28,7 +28,7 @@ function AddPost() {
       const docId = await createNewPost(textRef?.current?.value, dropdownName);
       if (selectedFile) {
         const imageRef = ref(storage, `/images/${docId.postId}`);
-        await uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
+        await uploadBytes(imageRef, selectedFile).then(async () => {
           const downloadURL = await getDownloadURL(imageRef);
           const docRef = doc(db, "postCollection", docId.postId);
           await updateDoc(docRef, {

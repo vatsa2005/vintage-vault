@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import postImage from "@/app/post-img.png";
 import {
   CircleDot,
